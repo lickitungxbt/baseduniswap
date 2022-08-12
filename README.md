@@ -1,4 +1,6 @@
-# Uniswap Labs Interface
+# Uniswap Labs Interface without Blocklist or Compliance BS
+
+You will need to build from source to deploy w/ changes!
 
 [![Unit Tests](https://github.com/Uniswap/interface/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/Uniswap/interface/actions/workflows/unit-tests.yaml)
 [![Integration Tests](https://github.com/Uniswap/interface/actions/workflows/integration-tests.yaml/badge.svg)](https://github.com/Uniswap/interface/actions/workflows/integration-tests.yaml)
