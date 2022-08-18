@@ -50,7 +50,6 @@ const StrongWarning: Warning = {
   canProceed: true,
 }
 
-
 export function checkWarning(tokenAddress: string) {
   switch (WarningCache.checkToken(tokenAddress.toLowerCase())) {
     case TOKEN_LIST_TYPES.UNI_DEFAULT:
