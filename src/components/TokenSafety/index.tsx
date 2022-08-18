@@ -83,10 +83,6 @@ const Buttons = ({
       buttonColor = theme.accentFailureSoft
       cancelColor = theme.textPrimary
       break
-    case WARNING_LEVEL.BLOCKED:
-      textColor = theme.textPrimary
-      buttonColor = theme.backgroundInteractive
-      break
   }
   return warning.canProceed ? (
     <>

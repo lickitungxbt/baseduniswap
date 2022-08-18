@@ -12,8 +12,6 @@ export const useTokenWarningColor = (level: WARNING_LEVEL) => {
         return setColor(theme.accentWarning)
       case WARNING_LEVEL.UNKNOWN:
         return setColor(theme.accentFailure)
-      case WARNING_LEVEL.BLOCKED:
-        return setColor(theme.textSecondary)
     }
   }, [level, theme])
 

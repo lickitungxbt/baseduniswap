@@ -12,7 +12,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
 
-import Blocklist from './components/Blocklist'
 import Web3Provider from './components/Web3Provider'
 import { LanguageProvider } from './i18n'
 import App from './pages/App'
@@ -56,7 +55,6 @@ createRoot(container).render(
           <HashRouter>
             <LanguageProvider>
               <Web3Provider>
-                <Blocklist>
                   <BlockNumberProvider>
                     <Updaters />
                     <ThemeProvider>
@@ -64,7 +62,6 @@ createRoot(container).render(
                       <App />
                     </ThemeProvider>
                   </BlockNumberProvider>
-                </Blocklist>
               </Web3Provider>
             </LanguageProvider>
           </HashRouter>
