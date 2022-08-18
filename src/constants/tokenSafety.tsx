@@ -8,7 +8,6 @@ export const TOKEN_SAFETY_ARTICLE = 'https://help.uniswap.org/en/'
 export enum WARNING_LEVEL {
   MEDIUM,
   UNKNOWN,
-  BLOCKED,
 }
 
 export function getWarningCopy(warning: Warning | null, plural = false) {
@@ -51,11 +50,6 @@ const StrongWarning: Warning = {
   canProceed: true,
 }
 
-const BlockedWarning: Warning = {
-  level: WARNING_LEVEL.BLOCKED,
-  message: <Trans>Not Available</Trans>,
-  canProceed: false,
-}
 
 export function checkWarning(tokenAddress: string) {
   switch (WarningCache.checkToken(tokenAddress.toLowerCase())) {
@@ -65,8 +59,6 @@ export function checkWarning(tokenAddress: string) {
       return MediumWarning
     case TOKEN_LIST_TYPES.UNKNOWN:
       return StrongWarning
-    case TOKEN_LIST_TYPES.BLOCKED:
-      return BlockedWarning
     case TOKEN_LIST_TYPES.BROKEN:
       return BlockedWarning
   }
