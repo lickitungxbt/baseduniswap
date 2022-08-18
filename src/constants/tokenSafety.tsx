@@ -59,6 +59,6 @@ export function checkWarning(tokenAddress: string) {
     case TOKEN_LIST_TYPES.UNKNOWN:
       return StrongWarning
     case TOKEN_LIST_TYPES.BROKEN:
-      return BlockedWarning
+      return StrongWarning
   }
 }
