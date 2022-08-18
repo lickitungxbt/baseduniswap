@@ -4,9 +4,7 @@ import { useAppSelector } from 'state/hooks'
 import sortByListPriority from 'utils/listSort'
 
 import BROKEN_LIST from '../../constants/tokenLists/broken.tokenlist.json'
-import UNSUPPORTED_TOKEN_LIST from '../../constants/tokenLists/unsupported.tokenlist.json'
 import { AppState } from '../index'
-import { UNSUPPORTED_LIST_URLS } from './../../constants/lists'
 
 export type TokenAddressMap = ChainTokenMap
 
@@ -70,14 +68,14 @@ function useCombinedTokenMapFromUrls(urls: string[] | undefined): TokenAddressMa
 // filter out unsupported lists
 export function useActiveListUrls(): string[] | undefined {
   const activeListUrls = useAppSelector((state) => state.lists.activeListUrls)
-  return useMemo(() => activeListUrls?.filter((url) => !UNSUPPORTED_LIST_URLS.includes(url)), [activeListUrls])
+  return useMemo(() => activeListUrls?.filter(!BROKEN_LIST), [activeListUrls])
 }
 
 export function useInactiveListUrls(): string[] {
   const lists = useAllLists()
   const allActiveListUrls = useActiveListUrls()
   return useMemo(
-    () => Object.keys(lists).filter((url) => !allActiveListUrls?.includes(url) && !UNSUPPORTED_LIST_URLS.includes(url)),
+    () => Object.keys(lists).filter((url) => !allActiveListUrls?.includes(url) && !BROKEN_LIST),
     [lists, allActiveListUrls]
   )
 }
@@ -94,17 +92,8 @@ export function useUnsupportedTokenList(): TokenAddressMap {
   // get hard-coded broken tokens
   const brokenListMap = useMemo(() => tokensToChainTokenMap(BROKEN_LIST), [])
 
-  // get hard-coded list of unsupported tokens
-  const localUnsupportedListMap = useMemo(() => tokensToChainTokenMap(UNSUPPORTED_TOKEN_LIST), [])
-
-  // get dynamic list of unsupported tokens
-  const loadedUnsupportedListMap = useCombinedTokenMapFromUrls(UNSUPPORTED_LIST_URLS)
-
+  return useMemo(() => brokenListMap, [brokenListMap])
   // format into one token address map
-  return useMemo(
-    () => combineMaps(brokenListMap, combineMaps(localUnsupportedListMap, loadedUnsupportedListMap)),
-    [brokenListMap, localUnsupportedListMap, loadedUnsupportedListMap]
-  )
 }
 export function useIsListActive(url: string): boolean {
   const activeListUrls = useActiveListUrls()
