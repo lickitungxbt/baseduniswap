@@ -55,13 +55,13 @@ createRoot(container).render(
           <HashRouter>
             <LanguageProvider>
               <Web3Provider>
-                  <BlockNumberProvider>
-                    <Updaters />
+                <BlockNumberProvider>
+                  <Updaters />
                     <ThemeProvider>
                       <ThemedGlobalStyle />
                       <App />
                     </ThemeProvider>
-                  </BlockNumberProvider>
+                </BlockNumberProvider>
               </Web3Provider>
             </LanguageProvider>
           </HashRouter>
